@@ -1,3 +1,4 @@
+package AEA1;
 import java.util.Scanner;
 
 public class AreaTriangle {
