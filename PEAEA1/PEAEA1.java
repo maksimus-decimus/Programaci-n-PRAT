@@ -8,7 +8,7 @@ public class PEAEA1{
     double descompte = 0;
     double preu_total_tot = 0;
     
-    
+    System.out.println("Bienvenid@ a la calculadora de precios, deberás introducir 5 precios de productos para saber si tienen descuento.");
     for (int i = 1; i<6; i++){
         System.out.println("Introduce el precio del producto " + i );
         double preu = lector.nextDouble();
@@ -26,8 +26,8 @@ public class PEAEA1{
                 descompte = descompteMAX;
             }
         total = (preu - descompte);
-        System.out.println("El descuento del producto " + i + " es " + descompte);
-        System.out.println("El total del producto "+i+" es "+ total); 
+        System.out.println("El descuento del producto " + i + " es " + descompte + " euros");
+        System.out.println("El total del producto "+i+" es "+ total + " euros"); 
         
             
 
