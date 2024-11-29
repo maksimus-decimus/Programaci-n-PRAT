@@ -20,10 +20,11 @@ public class PEAEA1{
 
         if(preu>0){
         total = preu;
+        System.out.println("Precio añadido");
             if(preu>50){
-                descompte = preu - (preu*0.6);
-            if (descompte > descompteMAX){
-                descompte = descompteMAX;
+                descompte = preu*0.06;
+                if (descompte > descompteMAX){
+                    descompte = descompteMAX;
             }
         total = (preu - descompte);
         System.out.println("El descuento del producto " + i + " es " + descompte + " euros");
