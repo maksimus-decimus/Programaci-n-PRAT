@@ -13,9 +13,10 @@ public class PEAEA1{
         System.out.println("Introduce el precio del producto " + i );
         double preu = lector.nextDouble();
 
-        while (preu<0){
+        if (preu<0){
             System.out.println("Introduce el precio del producto "+ i);
             preu = lector.nextDouble();
+            i--;
         }
 
         if(preu>0){
