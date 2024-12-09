@@ -18,6 +18,8 @@ public class cincoporcinco {
              if (matriz[i][j] > numMax) {
                 numMax = matriz[i][j];
             
+            } if (matriz[i][j] == numMax) {
+                contador++;
             }
             
         } 
@@ -26,6 +28,7 @@ public class cincoporcinco {
     } 
     System.out.println("El promedio de los valores de la matriz es: " + total/25); 
     System.out.println("El valor maximo de la matriz es: " + numMax);
+    System.out.println("El numero de veces que se repite es: " + contador);
 
  
     
