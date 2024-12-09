@@ -5,21 +5,29 @@ public class cincoporcinco {
         
     int [][] matriz = new int[5][5];
     Random randomNum = new Random();
+    int total = 0;
+    int numMax = matriz[0][0];
+    int contador = 0;
 
     for (int i = 0; i < matriz.length; i++) {
         for (int j = 0; j < matriz[i].length; j++) {
             
             matriz[i][j] = randomNum.nextInt(101);
+            total += matriz[i][j];
+            System.out.print(matriz[i][j]+ " ");
+             if (matriz[i][j] > numMax) {
+                numMax = matriz[i][j];
+            
+            }
+            
         } 
+        System.out.println(i);
+        
     } 
-   
-    for (int i = 0; i < matriz.length; i++) {
-        for (int j = 0; j < matriz[i].length; j++) {
-       
-        System.out.println("Posición " + i + " " + j + " de la matriz es: " + matriz[i][j]);    
-        } 
-    }
-    
+    System.out.println("El promedio de los valores de la matriz es: " + total/25); 
+    System.out.println("El valor maximo de la matriz es: " + numMax);
+
+ 
     
     
     
