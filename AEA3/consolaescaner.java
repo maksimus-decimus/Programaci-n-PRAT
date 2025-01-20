@@ -13,10 +13,12 @@ public class consolaescaner {
 
             System.out.println("¿Qué caracter desea imprimir?");
             char caracter = sc.next().charAt(0);
+
+            funcio(rep, caracter); 
             
-            funcio(rep, caracter);  
             System.out.println("¿Desea continuar?");
             String respuesta = sc.next();
+
             if (respuesta.equalsIgnoreCase("Si")) {
                 System.out.println();
             }
