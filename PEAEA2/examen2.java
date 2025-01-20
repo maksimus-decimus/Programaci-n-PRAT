@@ -34,23 +34,23 @@ public class examen2{
     System.out.println("Ahora introduzca el valor a buscar: ");
     buscar = lector.nextInt(); //sentenciar el numero a buscar
     
+    boolean encontrado = false;
 
     for (int i = 0; i < vector1.length; i++){
-        if (vector1[i]== buscar){ //si el valor en el vector es igual al buscado
-            encontradovector = vector1[i]; //guardar la posición donde se encuentra el valor
-               
+        if (vector1[i] == buscar){ //si el valor en el vector es igual al buscado
+            System.out.println();
+            System.out.println("Valor " + buscar + " encontrado en la posición "+i);
+            encontrado = true; 
+            encontradovector = buscar;  
         }    
     } System.out.println();
 
-    if (encontradovector == buscar){ // si el valor es encontrado, especificar donde y ponerlo, si no, entonces error
-        System.out.println("El valor " + buscar+ " ha sido encontrado en la posición " + encontradovector + " del vector.");
+    if (encontradovector != buscar){ 
+        System.out.println("Valor NO encontrado en el vector.");
     } else {
-        System.out.println("Valor no encontrado en el vector.");
+        System.out.println("Valor encontrado con éxito.");
     }
-    
-
-
-
+     
 
     }       
 }
