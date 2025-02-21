@@ -4,21 +4,27 @@ import java.util.Scanner;
 
 public class Joc {
 
+    private lectorterminal s = new lectorterminal();
+    
     private Tauler tauler;
    
     private char jugadorActual = 'X';
 
-    private Scanner scanner;
+    private boolean ple = false;
 
     private boolean guanyador = false;
+
+    
 
     Scanner lector = new Scanner(System.in);
 
     public void començarJoc(){
 
-        Tauler tauler = new Tauler();
+        tauler = new Tauler();
         System.out.println("BENVINGUTS A TIC TAC TOE: ");
-
+        
+        
+        EscollirJugador();
         tauler.MostrarTauler();
 
         FerTorn();  
@@ -26,18 +32,50 @@ public class Joc {
 
     }
 
+    public void EscollirJugador(){
+        boolean jugadorEscolt = false;
+        while (!jugadorEscolt){
+            System.out.println("Quin jugador comença? (X / O)");
+            String jugadorEscoltor = lector.nextLine();
+            if (jugadorEscoltor.equals("X")){
+                jugadorActual = 'X';
+                jugadorEscolt = true;
+            } else if (jugadorEscoltor.equals("O")){
+                jugadorActual = 'O';
+                jugadorEscolt = true;
+            }
+
+        }
+
+        
     
+    }
+
+
     public void FerTorn(){
 
-        while (!guanyador){
+        
+
+        while (!guanyador || !ple){
+
+
+            System.out.println("");
             System.out.println("ES EL TORN DELS: " + jugadorActual);
             System.out.println("Posa les posicions que vols marcar: ");
 
-            tauler.marcarCasella(lector.nextInt(), lector.nextInt(), jugadorActual);
+            System.out.println("Fila:");
+            int fila = s.LeerInt();
 
+            System.out.println("Columna:");
+            int columna = s.LeerInt();
+            System.out.println("");
+
+            tauler.marcarCasella(fila, columna, jugadorActual);
+            
             ComprovarGuanyador();
+            canviarJugador();  
+            
         }
-        
         
 
     }
@@ -51,26 +89,35 @@ public class Joc {
         }
 
         System.out.println("Canviant a.... " + jugadorActual);
+        tauler.MostrarTauler();
     }
     
     public void ComprovarGuanyador(){
 
         if (tauler.haGuanyat(jugadorActual)){
-            System.out.println("Les "+ jugadorActual +" han guanyat!");
-            tauler.MostrarTauler();
             guanyador = true;
+
             
         } if (tauler.taulerPle()){
-            System.out.println("No ha guanyat cap jugador");
-            tauler.MostrarTauler();
+            ple = true;
             
         }
         
-        else {
-            canviarJugador();
-            tauler.MostrarTauler();
-        }
+        if (guanyador){
+            System.out.println("");
+            System.out.println("=========================");
+            System.out.println("HAN GUANYAT ELS: " + jugadorActual);
+            System.out.println("=========================");
+            
+        } 
+        
+        
 
+        if (ple && !guanyador){
+            System.out.println("=========================");
+            System.out.println("TAULER PLE, CAP JUGADOR HA GUANYAT");
+            System.out.println("=========================");
+        }
 
 
     }

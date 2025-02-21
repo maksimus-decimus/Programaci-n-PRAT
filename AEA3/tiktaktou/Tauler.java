@@ -3,6 +3,11 @@ public class Tauler {
 
     private char [][] tauler;
 
+
+
+    
+
+
     public Tauler(){
         tauler = new char [3][3];
         InicialitzarTauler();
@@ -27,9 +32,12 @@ public class Tauler {
     }
 
 
-    public boolean marcarCasella(int fila, int columna, char jugador) {
+
+
+    
+    public boolean marcarCasella(int fila, int columna, char jugadorActual) {
         if (tauler[fila][columna] == '-') {
-            tauler[fila][columna] = jugador;
+            tauler[fila][columna] = jugadorActual;
             return true;
         } else {
             System.out.println("Casella ocupada, tria una altra.");

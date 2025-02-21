@@ -1,3 +1,4 @@
+package tiktaktou;
 import java.util.Scanner;
 
 public class lectorterminal {
@@ -20,7 +21,7 @@ public class lectorterminal {
         return 0;
     }
 
-    public double LeerInt(){
+    public int LeerInt(){
         Scanner s = new Scanner(System.in);
         boolean noleido = true;
 
@@ -36,4 +37,8 @@ public class lectorterminal {
         }
         return 0;
     }
+
+
+
+
 }
