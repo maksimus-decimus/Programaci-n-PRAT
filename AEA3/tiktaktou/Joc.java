@@ -14,16 +14,19 @@ public class Joc {
 
     private boolean guanyador = false;
 
-    
+    private int mida = 0;
 
     Scanner lector = new Scanner(System.in);
 
     public void començarJoc(){
 
-        tauler = new Tauler();
+        
         System.out.println("BENVINGUTS A TIC TAC TOE: ");
+        System.out.println("Introdueix la mida de la matriu: ");
+        mida = s.LeerInt();
         
         
+        tauler = new Tauler(mida);
         EscollirJugador();
         tauler.MostrarTauler();
 
@@ -37,10 +40,10 @@ public class Joc {
         while (!jugadorEscolt){
             System.out.println("Quin jugador comença? (X / O)");
             String jugadorEscoltor = lector.nextLine();
-            if (jugadorEscoltor.equals("X")){
+            if (jugadorEscoltor.equalsIgnoreCase("X")){
                 jugadorActual = 'X';
                 jugadorEscolt = true;
-            } else if (jugadorEscoltor.equals("O")){
+            } else if (jugadorEscoltor.equalsIgnoreCase("O")){
                 jugadorActual = 'O';
                 jugadorEscolt = true;
             }
@@ -56,7 +59,7 @@ public class Joc {
 
         
 
-        while (!guanyador || !ple){
+        while (!guanyador && !ple){
 
 
             System.out.println("");
@@ -73,11 +76,33 @@ public class Joc {
             tauler.marcarCasella(fila, columna, jugadorActual);
             
             ComprovarGuanyador();
-            canviarJugador();  
-            
+
+            if (guanyador || ple ){
+                break;
+            }
+
+            canviarJugador();     
+               
         }
         
+        if (guanyador){
+            System.out.println("");
+            System.out.println("=========================");
+            System.out.println("HAN GUANYAT ELS: " + jugadorActual);
+            System.out.println("=========================");
+            tauler.MostrarTauler();
+            
+        } 
+        
+        
 
+        if (ple && !guanyador){
+            System.out.println("=========================");
+            System.out.println("TAULER PLE, CAP JUGADOR HA GUANYAT");
+            System.out.println("=========================");
+            tauler.MostrarTauler();
+            
+        }
     }
     
     public void canviarJugador(){
@@ -92,34 +117,19 @@ public class Joc {
         tauler.MostrarTauler();
     }
     
-    public void ComprovarGuanyador(){
-
+    public boolean ComprovarGuanyador(){
         if (tauler.haGuanyat(jugadorActual)){
             guanyador = true;
-
-            
-        } if (tauler.taulerPle()){
-            ple = true;
-            
-        }
-        
-        if (guanyador){
-            System.out.println("");
-            System.out.println("=========================");
-            System.out.println("HAN GUANYAT ELS: " + jugadorActual);
-            System.out.println("=========================");
-            
+            return true;
         } 
         
-        
-
-        if (ple && !guanyador){
-            System.out.println("=========================");
-            System.out.println("TAULER PLE, CAP JUGADOR HA GUANYAT");
-            System.out.println("=========================");
+        if (tauler.taulerPle()){
+            ple = true;
+            return true;
+            
         }
-
-
+        
+        return false;
     }
     // consturctora
     //comenzar joc
