@@ -2,6 +2,8 @@ package Herencia_multi;
 
 public class Arona extends SEAT{
 
+    String color;
+
     public Arona()
     {
         System.out.println("SEAT Model: Arona");
@@ -13,12 +15,15 @@ public class Arona extends SEAT{
         System.out.println("Max: 80Kmph");
     }
 
-
-    public static void main(String args[])
-    {
-        Arona obj=new Arona();
-        obj.vehicleType();
-        obj.brand();
-        obj.speed();
+    public void setColor(String nColor) {
+        color = nColor;
     }
+
+    public String getColor(){
+        return color;
+    }
+   
+
+
+  
 }
