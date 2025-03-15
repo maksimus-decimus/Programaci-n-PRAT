@@ -53,11 +53,13 @@ public class Habitacio extends Allotjament{
 
     @Override
     public void mostrarInformacio(){
+        System.out.println("--------------------");
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
-        System.out.println("Disponible: " + disponibilitat);
+        System.out.println((disponibilitat ? "Disponible":"No Disponible" ));
         System.out.println("Preu per nit: " + PreuNit);
         System.out.println("Nombre de llits: " + numLlits);
+        System.out.println("--------------------");
 
     }
     

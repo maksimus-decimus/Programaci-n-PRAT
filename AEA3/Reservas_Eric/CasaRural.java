@@ -52,12 +52,14 @@ public class CasaRural extends Allotjament{
 
     @Override
     public void mostrarInformacio(){
+        System.out.println("--------------------");
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
-        System.out.println("Disponible: " + disponibilitat);
+        System.out.println((disponibilitat ? "Disponible" : "No disponible"));
         System.out.println("Preu per nit: " + PreuNit);
         System.out.println("Jardí: " + (teJardi ? "Sí" : "No"));
         System.out.println("Piscina: " + (tePiscina ? "Sí" : "No"));
+        System.out.println("--------------------");
     }
 
 }
