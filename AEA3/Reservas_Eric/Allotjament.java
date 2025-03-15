@@ -39,7 +39,7 @@ public class Allotjament {
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
         System.out.println((disponibilitat ? "Disponible" : "No disponible"));
-        System.out.println("Preu per nit: " + PreuNit);
+        System.out.println("Preu per nit: " + PreuNit+ " euros");
         System.out.println("--------------------");
     }
     public void reservar(){

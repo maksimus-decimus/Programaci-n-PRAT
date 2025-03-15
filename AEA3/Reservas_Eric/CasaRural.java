@@ -10,6 +10,7 @@ public class CasaRural extends Allotjament{
         super(nom, capacitat, disponibilitat, PreuNit);
         this.teJardi = teJardi;
         this.tePiscina = tePiscina;
+        setPreuNit(PreuNit); //set perque si no, no fa calcul, nomes agafa el preu de la constructora del main
     }
     
     public boolean isTePiscina() {
@@ -47,7 +48,11 @@ public class CasaRural extends Allotjament{
     }
 
     public void setPreuNit(double PreuNit) {
-        this.PreuNit = PreuNit;
+        if (this.tePiscina) { //si tiene piscina, 50 euros
+            this.PreuNit = PreuNit + 50;
+        } else {
+            this.PreuNit = PreuNit;
+        }
     }
 
     @Override
@@ -56,7 +61,7 @@ public class CasaRural extends Allotjament{
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
         System.out.println((disponibilitat ? "Disponible" : "No disponible"));
-        System.out.println("Preu per nit: " + PreuNit);
+        System.out.println("Preu per nit: " + PreuNit + " euros");
         System.out.println("Jardí: " + (teJardi ? "Sí" : "No"));
         System.out.println("Piscina: " + (tePiscina ? "Sí" : "No"));
         System.out.println("--------------------");

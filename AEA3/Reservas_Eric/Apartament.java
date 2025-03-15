@@ -10,6 +10,7 @@ public class Apartament extends Allotjament{
         super(nom, capacitat, disponibilitat, PreuNit);
         this.habitacions = habitacions;
         this.teCuina = teCuina;
+        setPreuNit(PreuNit); //set perque si no, no fa calcul, nomes agafa el preu de la constructora del main
     }
 
 
@@ -49,7 +50,7 @@ public class Apartament extends Allotjament{
     }
 
     public void setPreuNit(double PreuNit) {
-        this.PreuNit = PreuNit;
+        this.PreuNit = PreuNit + (habitacions * 10); // por cada habitación, 10 euros
     }
 
     @Override
@@ -58,7 +59,7 @@ public class Apartament extends Allotjament{
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
         System.out.println((disponibilitat ? "Disponible" : "No disponible"));
-        System.out.println("Preu per nit: " + PreuNit);
+        System.out.println("Preu per nit: " + PreuNit + " euros");
         System.out.println("Habitacions: " + habitacions);
         System.out.println("Cuina: " + (teCuina ? "Sí" : "No"));
         System.out.println("--------------------");

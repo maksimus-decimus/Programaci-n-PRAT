@@ -13,11 +13,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ArrayList<Allotjament> allotjaments = new ArrayList<>(); //ARRAYlist dels allotjaments
         //llista d'allotjaments d'exemple
-        allotjaments.add (new Apartament("Apartamento Hospitalet A", 2, true, 50, 2, true));
-        allotjaments.add (new CasaRural("Casa Rural B", 4, false, 100, true, false));
-        allotjaments.add (new Habitacio("Habitació C", 2, true, 20, 2));
-        allotjaments.add (new CasaRural("Casa Rural D", 6, true, 100, true, false));
-        allotjaments.add (new CasaRural("Casa Rural Pobre E", 8, true, 100, false, false));
+        allotjaments.add (new Apartament("Apartamento_A", 2, true, 100, 4, true));
+        allotjaments.add (new CasaRural("Casa_B", 4, false, 150, true, false));
+        allotjaments.add (new Habitacio("Habitacio_C", 2, true, 50, 5));
+        allotjaments.add (new CasaRural("Casa_D", 6, true, 150, false, true));
+        allotjaments.add (new CasaRural("Casa_pobre_E", 8, true, 150, false, false));
 
         
 

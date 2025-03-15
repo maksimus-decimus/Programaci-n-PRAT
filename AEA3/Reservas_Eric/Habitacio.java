@@ -8,6 +8,7 @@ public class Habitacio extends Allotjament{
     public Habitacio(String nom, int capacitat, boolean disponibilitat, double PreuNit, int numLlits){
         super(nom, capacitat, disponibilitat, PreuNit);
         this.numLlits = numLlits;
+        setPreuNit(PreuNit); //set perque si no, no fa calcul, nomes agafa el preu de la constructora del main
     }
 
 
@@ -43,12 +44,18 @@ public class Habitacio extends Allotjament{
         this.numLlits = numLlits;
     }
 
+    
     public double getPreuNit() {
         return PreuNit;
     }
-
+    
     public void setPreuNit(double PreuNit) {
-        this.PreuNit = PreuNit;
+        if (this.numLlits > 3) { //si supera más de 3 camas, se añaden 20 euros
+            this.PreuNit = PreuNit + (this.numLlits - 3) * 20;
+        } else {
+            this.PreuNit = PreuNit;
+        }
+       
     }
 
     @Override
@@ -57,7 +64,7 @@ public class Habitacio extends Allotjament{
         System.out.println("Nom: " + nom);
         System.out.println("Capacitat: " + capacitat);
         System.out.println((disponibilitat ? "Disponible":"No Disponible" ));
-        System.out.println("Preu per nit: " + PreuNit);
+        System.out.println("Preu per nit: " + PreuNit + " euros");
         System.out.println("Nombre de llits: " + numLlits);
         System.out.println("--------------------");
 
