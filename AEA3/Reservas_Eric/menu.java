@@ -101,7 +101,7 @@ public class menu {
         int tipus = sc.nextInt();
         sc.nextLine(); //consumir salt de línia
 
-        System.out.print("Nom: ");
+        System.out.print("Nom: "); //Afegir totes les dades de les constructores
         String nom = sc.nextLine();
         System.out.print("Capacitat: ");
         int capacitat = sc.nextInt();
