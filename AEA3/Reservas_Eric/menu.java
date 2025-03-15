@@ -99,7 +99,7 @@ public class menu {
     public static void afegir_Allotjament(ArrayList<Allotjament> allotjaments, Scanner sc) {
         System.out.println("Quin tipus d'allotjament vols afegir? (1: Habitació, 2: Apartament, 3: Casa Rural)");
         int tipus = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine(); //consumir salt de línia
 
         System.out.print("Nom: ");
         String nom = sc.nextLine();
