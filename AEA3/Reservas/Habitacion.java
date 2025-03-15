@@ -32,6 +32,7 @@ public class Habitacion extends Allotjament{
     
     @Override
     public void Mostrar_informacio(){
+        
         System.out.println("Habitació: " + nom + " (Llits: " + Llits + ") " + (Disponible ? "- Disponible" : "No disponible"));
     }
 

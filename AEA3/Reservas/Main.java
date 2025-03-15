@@ -31,7 +31,8 @@ public class Main {
 
             
         do {
-            System.out.println("MENÚ:");
+           
+            System.out.println("\nMENÚ:");
             System.out.println("1. Mostrar allotjaments disponibles");
             System.out.println("2. Reservar allotjament");
             System.out.println("3. Alliberar allotjament");
@@ -71,8 +72,9 @@ public class Main {
                     break; 
             }
         } while (!opcion.equals("4"));
+            lector.close();
             System.out.println("Sortint...");
             System.out.println();
-    }
+    }       
 
 }

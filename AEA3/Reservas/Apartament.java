@@ -41,6 +41,7 @@ public class Apartament extends Allotjament{
 
     @Override
     public void Mostrar_informacio(){
+        
         System.out.println("Apartament: " + nom + " (Habitacions: " + habitacions + ", Cuina: " + (teCuina ? "Sí" : "No") + ") " + (Disponible ? "- Disponible" : "No disponible") );
     }
 }
