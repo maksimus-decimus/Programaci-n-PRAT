@@ -107,20 +107,23 @@ public class menu {
         int capacitat = sc.nextInt();
         System.out.print("Disponible (true/false): ");
         boolean disponible = sc.nextBoolean();
-        System.out.print("Preu per nit: ");
-        double preuNit = sc.nextDouble();
+        
+        double preuNit;
 
         if (tipus == 1) {
+            preuNit = 50;
             System.out.print("Nombre de llits: ");
             int numLlits = sc.nextInt();
             allotjaments.add(new Habitacio(nom, capacitat, disponible, preuNit, numLlits));
         } else if (tipus == 2) {
+            preuNit = 100;
             System.out.print("Nombre de habitacions: ");
             int numhabit = sc.nextInt();
             System.out.print("Té cuina (true/false): ");
             boolean teCuina = sc.nextBoolean();
             allotjaments.add(new Apartament(nom, capacitat, disponible, preuNit, numhabit, teCuina));
         } else if (tipus == 3) {
+            preuNit = 150;
             System.out.print("Té piscina (true/false): ");
             boolean tePiscina = sc.nextBoolean();
             System.out.print("Té jardí (true/false): ");
