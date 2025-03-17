@@ -13,6 +13,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ArrayList<Allotjament> allotjaments = new ArrayList<>(); //ARRAYlist dels allotjaments
         //llista d'allotjaments d'exemple
+        //i si no els vols treu els exemples i afegeix els teus allotjaments
         allotjaments.add (new Apartament("Apartamento_A", 2, true, 100, 4, true));
         allotjaments.add (new CasaRural("Casa_B", 4, false, 150, true, false));
         allotjaments.add (new Habitacio("Habitacio_C", 2, true, 50, 5));
