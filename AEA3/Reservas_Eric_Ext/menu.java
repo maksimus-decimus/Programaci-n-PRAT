@@ -15,6 +15,7 @@ public class menu {
         System.out.println("--------------------");
         System.out.println("6. ADMINISTRADOR: AFEGIR NOU ALLOTJAMENT");
         System.out.println("--------------------");
+        System.out.println("7. Reserva ràpida");
         System.out.print("\nTria una opció: ");
     }
 
@@ -23,6 +24,8 @@ public class menu {
         System.out.println("2. Buscar allotjaments amb preu major a X");
         System.out.println("3. Buscar allotjaments amb cuina");
         System.out.println("4. Buscar allotjaments amb piscina o jardí");
+        System.out.println("5. Mostar allotjaments de major a menor preu");
+        System.out.println("6. Mostar allotjaments de menor a major preu");
         System.out.print("Tria una opció: ");
 
         
@@ -47,6 +50,61 @@ public class menu {
         }
     }
 
+
+    public void reserva_rapida(Allotjament[] allotjaments, Scanner sc) {
+        System.out.println("Introdueix quants dies vols reservar: ");
+        int dies = sc.nextInt();
+        System.out.println("Introdueix el nombre de persones: ");
+        int persones = sc.nextInt();
+        System.out.println("Introdueix el preu màxim que vols pagar: ");
+        double preu = sc.nextDouble();
+        System.out.println("Introdueix si vols cuina (true/false): ");
+        boolean teCuina = sc.nextBoolean();
+        System.out.println("Introdueix si vols piscina (true/false): ");
+        boolean tePiscina = sc.nextBoolean();
+        System.out.println("Introdueix si vols jardí (true/false): ");
+        boolean teJardi = sc.nextBoolean();
+
+        for (Allotjament a : allotjaments) {
+            boolean coincideix = true;
+            if (a instanceof CasaRural) {
+                CasaRural cr = (CasaRural) a;
+                coincideix = coincideix && cr.isTePiscina() == tePiscina && cr.isTeJardi() == teJardi;
+            }
+            if (a instanceof Apartament) {
+                Apartament ap = (Apartament) a;
+                coincideix = coincideix && ap.isTeCuina() == teCuina;
+            }
+            if (coincideix && a.isDisponibilitat() && a.getCapacitat() >= persones) {
+                double costTotal = calcularCostTotal(a, dies);
+                a.mostrarInformacio();
+                System.out.println("El cost total de la reserva és: " + costTotal + " euros.");
+                System.out.print("Vols confirmar la reserva? (true/false): ");
+                boolean confirmar = sc.nextBoolean();
+                if (confirmar) {
+                    a.reservar();
+                    System.out.println("Allotjament reservat correctament.");
+                } else {
+                    System.out.println("Reserva cancel·lada.");
+                }
+                return;
+            }
+        }
+        System.out.println("No s'ha trobat cap allotjament disponible amb aquestes característiques.");
+    }
+    
+        private double calcularCostTotal(Allotjament allotjament, int dies) {
+        return allotjament.getPreuNit() * dies;
+        }
+
+   
+
+
+
+
+
+
+    
     public void alliberarAllotjament(Allotjament[] allotjaments, Scanner sc) {
         System.out.print("Introdueix el nom de l'allotjament a alliberar: ");
         String nom = sc.next();
@@ -95,6 +153,45 @@ public class menu {
             }
         }
     }
+
+    public void Major_a_menor(Allotjament[] allotjaments) {
+        for (int i = 0; i < allotjaments.length; i++) {
+            for (int j = i + 1; j < allotjaments.length; j++) {
+                if (allotjaments[i].getPreuNit() < allotjaments[j].getPreuNit()) {
+                    Allotjament aux = allotjaments[i];
+                    allotjaments[i] = allotjaments[j];
+                    allotjaments[j] = aux;
+                }
+            }
+        }
+        for (Allotjament a : allotjaments) {
+            if (a.isDisponible()) {
+                System.out.println();
+                a.mostrarInformacio();
+            }
+        }
+    }
+
+    public void Menor_a_major(Allotjament[] allotjaments) {
+        for (int i = 0; i < allotjaments.length; i++) {
+            for (int j = i + 1; j < allotjaments.length; j++) {
+                if (allotjaments[i].getPreuNit() > allotjaments[j].getPreuNit()) {
+                    Allotjament aux = allotjaments[i];
+                    allotjaments[i] = allotjaments[j];
+                    allotjaments[j] = aux;
+                }
+            }
+        }
+        for (Allotjament a : allotjaments) {
+            if (a.isDisponible()) {
+                System.out.println();
+                a.mostrarInformacio();
+            }
+        }
+    }
+
+
+
     
     public static void afegir_Allotjament(ArrayList<Allotjament> allotjaments, Scanner sc) {
         System.out.println("Quin tipus d'allotjament vols afegir? (1: Habitació, 2: Apartament, 3: Casa Rural)");
@@ -134,4 +231,6 @@ public class menu {
         System.out.println("Allotjament afegit correctament.");
         System.out.println("----------------------------------");
     }
+    
 }
+

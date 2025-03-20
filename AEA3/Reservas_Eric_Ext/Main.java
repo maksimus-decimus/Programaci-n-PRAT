@@ -14,10 +14,10 @@ public class Main {
         ArrayList<Allotjament> allotjaments = new ArrayList<>(); //ARRAYlist dels allotjaments
         //llista d'allotjaments d'exemple
         //i si no els vols treu els exemples i afegeix els teus allotjaments
-        //allotjaments.add (new Apartament("Apartamento_A", 2, true, 100, 4, true));
+        allotjaments.add (new Apartament("Apartamento_A", 2, true, 100, 4, true));
         //allotjaments.add (new CasaRural("Casa_B", 4, false, 150, true, false));
-        //allotjaments.add (new Habitacio("Habitacio_C", 2, true, 50, 5));
-        //allotjaments.add (new CasaRural("Casa_D", 6, true, 150, false, true));
+        allotjaments.add (new Habitacio("Habitacio_C", 2, true, 50, 5));
+        allotjaments.add (new CasaRural("Casa_D", 6, true, 150, false, true));
         //allotjaments.add (new CasaRural("Casa_pobre_E", 8, true, 150, false, false));
 
         
@@ -57,15 +57,27 @@ public class Main {
                 } else if (subOpcio == 4) {
                     System.out.println();
                     menu.buscar_PiscinaJardi(allotjaments.toArray(new Allotjament[0]));
+
+                } else if (subOpcio == 5) {
+                    System.out.println();
+                    menu.Major_a_menor((allotjaments.toArray(new Allotjament[0])));
+
+                } else if (subOpcio == 6) {
+                    System.out.println();
+                    menu.Menor_a_major(allotjaments.toArray(new Allotjament[0]));
                 }
+
 
 
             } else if (opcio == 5) {
                 programa = false;
                 System.out.println("Sortint...");
+
             } else if (opcio == 6) { // Opció d'admin
-                
                 menu.afegir_Allotjament(allotjaments,sc);
+
+            } else if (opcio == 7) { 
+                menu.reserva_rapida(allotjaments.toArray(new Allotjament[0]), sc);
             }
         }
     }
