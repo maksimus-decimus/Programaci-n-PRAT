@@ -3,7 +3,7 @@ import static MasterMind.CodeGenerator.*;
 import static MasterMind.Feedback.*; //importar de Feedback
 
 import java.util.Random;
-import java.util.HashSet;
+import java.util.HashSet; // hashset para ponerlas en el set y que no se dupliquen (la ia me lo ha dicho, así que lo he usado)
 
 public class COM extends Player {
 
@@ -12,30 +12,30 @@ public class COM extends Player {
 
     private char[] letrasCorrectas; // recordar letras acertadas
     private HashSet<Character> letrasIncorrectas = new HashSet<>(); // recordar letras incorrectas
+    private HashSet<Character> posibles = new HashSet<>(); // recordar letras posibles
 
     public COM() {
         letrasCorrectas = new char[LONG_SECRET]; // inicializar el array de letras correctas
         for (int i = 0; i < letrasCorrectas.length; i++) {
-            letrasCorrectas[i] = ' '; // inicializar 
+            letrasCorrectas[i] = ' '; 
         }        
     }     
 
     @Override
     public String preguntarResposta() {
-        StringBuilder resposta = new StringBuilder();
+        StringBuilder resposta = new StringBuilder(); //recomienda la ia usar strinbuilder para no crear un nuevo objeto cada vez que se concatena
 
-    for (int i = 0; i < LONG_SECRET; i++) {
+    for (int i = 0; i < LONG_SECRET; i++) { //en base a la longitud de la palabra secreta, ajustar generacion
             if (letrasCorrectas[i] != ' ') {
-                // si ya conocemos la letra correcta en esta posicion, la usamos
+                // si ya conocemos la letra correcta en esta posicion, la usamos en exactamente la misma posicion
                 resposta.append(letrasCorrectas[i]);
             } else {
-                // generar una letra aleatoria que no este en letrasIncorrectas
                 char letra;
                 do {
-                    int index = random.nextInt(abc.length());
+                    int index = random.nextInt(abc.length()); //generar basura aleatoria
                     letra = abc.charAt(index);
-                } while (letrasIncorrectas.contains(letra));
-                resposta.append(letra);
+                } while (letrasIncorrectas.contains(letra)); // revisar que no esté descartado, si lo está, volver a generar
+                resposta.append(letra); //enviar esto a la respuesta
             }
         }
         return resposta.toString();
@@ -46,29 +46,32 @@ public class COM extends Player {
             char charPista = pista.charAt(i);
             char charResposta = resposta.charAt(i);
             if (charPista == TOT_CORRECTE) {
-                // si la pista indica que la letra este en la posicion correcta
+                // si la pista indica que la letra este en la posicion correcta, para luego volverlas a usar
                 letrasCorrectas[i] = charResposta;
+
+            } else if (charPista == MALA_POSICIO) {
+
+                posibles.add(charResposta); // agregar a posibles, para volverlas a usar en otra posicion
             } else if (charPista == INCORRECTE) {
-                // si la pista indica que la letra no este en la palabra secreta
+                // si no es correcto, agregar al hash set para descartar las letras
                 letrasIncorrectas.add(charResposta);
             }
-            // si la pista es MALA_POSICIO, no hacemos nada especial aqui,
-            // pero podria implementar logico adicional si lo necesitas.
+           
         }
     }
 
     public boolean intentarAdivinar(String secret) {
-        String resposta = preguntarResposta(); // generar una respuesta aleatoria
+        String resposta = preguntarResposta(); 
         System.out.println("La màquina ha intentat: " + resposta);
         // resolver la respuesta y obtener la pista
 
         String pista = feedback.generarPista(secret, resposta);
         System.out.println("Pista generada per la màquina: " + pista);
-        // procesar la pista para mejorar los intentos futuros
+        
 
         procesarPista(resposta, pista);
 
-        return resposta.equals(secret); // devolver true si la máquina adivina correctamente
+        return resposta.equals(secret); // devolver true si la maquina acierta
     }
 
 
