@@ -17,8 +17,19 @@ public class MasterMindGame {
 
     public static void main(String[] args) {
         MasterMindGame programa = new MasterMindGame();
+        HumanPlayer jugador;
+
+
         programa.menu.inici();
-        programa.esInfantil = programa.menu.esInfantil;
+        
+        if (programa.menu.esInfantil) {
+            jugador = new Infantil();
+            programa.esInfantil = true; // Actualizar el estado de esInfantil
+            
+        } else {
+            jugador = new Adulto();
+            programa.esInfantil = false; // Actualizar el estado de esInfantil
+        }
         
 
         programa.secret = programa.codeGenerator.generarParaulaSecreta(programa.esInfantil);
