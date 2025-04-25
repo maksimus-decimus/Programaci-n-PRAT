@@ -24,7 +24,7 @@ public class FileObtenirRuta {
     public void mostrarRuta(File ruta) {
         System.out.println("Ruta absoluta: " + ruta.getAbsolutePath());
         System.out.println("Su padre es " + ruta.getParent());
-        System.out.println("Nom del fitxer: " + ruta.getName());
+        System.out.println("Nom del fitxer: " + ruta.getName()+ "\n");
     }
         
 
