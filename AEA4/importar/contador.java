@@ -14,19 +14,27 @@ public class contador {
         
         try {
             //Lectura d'arxiu
-            File f = new File("C:/Users/maxyf/Documents/entrada.txt");
+            File f = new File("C:/Users/maxyf/Documents/arxiu.txt");
             Scanner lector = new Scanner(f);
             int numParaules = 0;
+            StringBuilder fraserecta = new StringBuilder(); // objecte de la classe frase recta
+
+            
+
             while (lector.hasNext()) {
                 String paraula = lector.next();
+                fraserecta.append(paraula).append(" "); //poner frase 
                 numParaules++;
             }
             lector.close();
-            
+
+            String fraseinvertida = invertirFrase(fraserecta.toString()); //objecte de la classe frase invertida
+
             //Escriptura d'arxiu
-            File g = new File("C:/Users/maxyf/Documents/sortida.txt");
+            File g = new File("C:/Users/maxyf/Documents/arxiu_comptat_invertit.txt");
             PrintWriter escriptor = new PrintWriter(g);
             escriptor.println(numParaules + " paraules.");
+            escriptor.println("Frase invertida: " + fraseinvertida.toString());
             escriptor.close();
         }
 
@@ -45,4 +53,15 @@ public class contador {
     }
     
 
+
+    public static String invertirFrase(String frase) {
+        String[] paraules = frase.split(" ");
+        StringBuilder fraseInvertida = new StringBuilder();
+
+        for (int i = paraules.length - 1; i >= 0; i--) {
+            StringBuilder paraulaInvertida = new StringBuilder(paraules[i]);
+            fraseInvertida.append(paraulaInvertida.reverse()).append(" ");
+        }
+        return fraseInvertida.toString().trim();
+    }
 }
