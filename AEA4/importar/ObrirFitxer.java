@@ -11,7 +11,7 @@ public class ObrirFitxer {
             System.out.println("Fichero abierto correctamente");
 
         } catch (Exception e) {
-            // TODO: handle exception
+            
         }
 
     }
